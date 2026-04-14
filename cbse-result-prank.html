@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBSE | Central Board of Secondary Education - Result</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cbse-blue: #003580;
+    --cbse-red: #c0392b;
+    --cbse-orange: #e67e22;
+    --cbse-light: #f0f4f8;
+    --cbse-border: #d0d7de;
+    --cbse-text: #1a1a2e;
+    --cbse-muted: #555;
+  }
+
+  body {
+    font-family: 'Noto Sans', Arial, sans-serif;
+    background: #e8edf2;
+    color: var(--cbse-text);
+    min-height: 100vh;
+  }
+
+  /* ── TOP STRIP ── */
+  .gov-strip {
+    background: #003580;
+    color: #fff;
+    font-size: 11px;
+    padding: 4px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .gov-strip a { color: #aac4ff; text-decoration: none; font-size: 11px; }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: #fff;
+    border-bottom: 3px solid var(--cbse-orange);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .logo-emblem { width: 64px; height: 64px; }
+  .logo-emblem svg { width: 100%; height: 100%; }
+  .header-text h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--cbse-blue);
+    line-height: 1.2;
+  }
+  .header-text p {
+    font-size: 12px;
+    color: var(--cbse-muted);
+    margin-top: 2px;
+  }
+  .header-right {
+    margin-left: auto;
+    text-align: right;
+    font-size: 11px;
+    color: var(--cbse-muted);
+  }
+  .header-right .helpline {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cbse-red);
+  }
+
+  /* ── NAV ── */
+  .site-nav {
+    background: var(--cbse-blue);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    padding: 0 8px;
+  }
+  .site-nav a {
+    color: #dce8ff;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 8px 14px;
+    display: block;
+    transition: background .15s;
+  }
+  .site-nav a:hover, .site-nav a.active { background: var(--cbse-orange); color: #fff; }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    background: #fff;
+    border-bottom: 1px solid var(--cbse-border);
+    padding: 6px 20px;
+    font-size: 12px;
+    color: var(--cbse-muted);
+  }
+  .breadcrumb a { color: var(--cbse-blue); text-decoration: none; }
+
+  /* ── MAIN ── */
+  .main-wrap {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 12px 40px;
+  }
+
+  .page-title {
+    background: var(--cbse-blue);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--cbse-border);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    padding: 24px 20px;
+  }
+
+  /* ── FORM ── */
+  .notice-box {
+    background: #fff8e1;
+    border-left: 4px solid var(--cbse-orange);
+    padding: 10px 14px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    border-radius: 0 4px 4px 0;
+  }
+  .notice-box strong { color: var(--cbse-red); }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media(max-width:600px){ .form-grid { grid-template-columns: 1fr; } }
+
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--cbse-blue);
+    margin-bottom: 5px;
+  }
+  .form-group label span { color: var(--cbse-red); }
+  .form-group input, .form-group select {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid #b0b8c4;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: inherit;
+    background: #f9fafb;
+    transition: border .2s, box-shadow .2s;
+  }
+  .form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--cbse-blue);
+    box-shadow: 0 0 0 3px rgba(0,53,128,.12);
+    background: #fff;
+  }
+
+  .captcha-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .captcha-box {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    padding: 8px 18px;
+    border-radius: 4px;
+    user-select: none;
+    font-family: 'Courier New', monospace;
+    text-decoration: line-through;
+    filter: blur(0.3px);
+  }
+  .captcha-input {
+    flex: 1;
+    padding: 9px 12px;
+    border: 1px solid #b0b8c4;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: monospace;
+  }
+
+  .btn-row { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--cbse-blue);
+    color: #fff;
+    border: none;
+    padding: 10px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background .2s, transform .1s;
+  }
+  .btn-primary:hover { background: #002366; transform: translateY(-1px); }
+  .btn-secondary {
+    background: #fff;
+    color: var(--cbse-blue);
+    border: 1px solid var(--cbse-blue);
+    padding: 10px 24px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .btn-secondary:hover { background: #f0f4f8; }
+
+  /* ── LOADING ── */
+  #loadingScreen {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .loader-ring {
+    width: 60px; height: 60px;
+    border: 6px solid #e0e7ef;
+    border-top-color: var(--cbse-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-steps { font-size: 13px; color: var(--cbse-muted); margin-top: 8px; }
+  .loading-steps .step { margin: 6px 0; }
+  .step-tick { color: #27ae60; font-weight: 700; }
+
+  /* ── RESULT TABLE ── */
+  #resultScreen { display: none; }
+
+  .result-header-bar {
+    background: var(--cbse-blue);
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 4px 4px 0 0;
+  }
+  .result-header-bar small { display: block; font-weight: 400; font-size: 11px; opacity: .8; margin-top: 2px; }
+
+  .student-info-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .student-info-table td {
+    padding: 6px 12px;
+    border: 1px solid var(--cbse-border);
+  }
+  .student-info-table td:first-child {
+    background: #f0f4f8;
+    font-weight: 600;
+    width: 40%;
+    color: var(--cbse-blue);
+  }
+
+  .marks-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 16px;
+  }
+  .marks-table th {
+    background: var(--cbse-blue);
+    color: #fff;
+    padding: 8px 10px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid #002366;
+  }
+  .marks-table td {
+    padding: 7px 10px;
+    border: 1px solid var(--cbse-border);
+    text-align: center;
+  }
+  .marks-table tr:nth-child(even) td { background: #f7f9fb; }
+  .marks-table tr:hover td { background: #eef2f8; }
+  .marks-table .subject-name { text-align: left; font-weight: 500; }
+  .marks-table .total-row td {
+    background: #fff8e1 !important;
+    font-weight: 700;
+    color: var(--cbse-blue);
+  }
+
+  .result-pass { color: #27ae60; font-weight: 700; }
+  .result-fail { color: var(--cbse-red); font-weight: 700; }
+  .percentage-big {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--cbse-blue);
+    text-align: center;
+    margin: 4px 0;
+  }
+  .grade-big {
+    font-size: 14px;
+    text-align: center;
+    color: var(--cbse-muted);
+  }
+
+  .result-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .summary-box {
+    border: 1px solid var(--cbse-border);
+    border-radius: 4px;
+    padding: 12px;
+    text-align: center;
+    background: #f9fafb;
+  }
+  .summary-box .label { font-size: 11px; color: var(--cbse-muted); text-transform: uppercase; letter-spacing: .5px; }
+  .summary-box .value { font-size: 18px; font-weight: 700; color: var(--cbse-blue); margin-top: 4px; }
+
+  /* ── PRANK OVERLAY ── */
+  #prankOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.75);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .prank-card {
+    background: #fff;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,.5);
+    animation: popIn .5s cubic-bezier(.34,1.56,.64,1) both;
+  }
+  @keyframes popIn {
+    from { transform: scale(.5); opacity: 0; }
+    to   { transform: scale(1);  opacity: 1; }
+  }
+  .prank-banner {
+    background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+    padding: 30px 20px 20px;
+    text-align: center;
+    color: #fff;
+  }
+  .prank-emoji { font-size: 64px; line-height: 1; margin-bottom: 8px; animation: bounce 1s infinite; }
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+  }
+  .prank-banner h2 { font-size: 26px; font-weight: 900; letter-spacing: 1px; }
+  .prank-banner p { font-size: 14px; opacity: .9; margin-top: 4px; }
+
+  .prank-body { padding: 24px 28px; }
+  .prank-body .hindi-msg {
+    font-size: 22px;
+    font-weight: 800;
+    color: #e63946;
+    text-align: center;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .prank-body .hindi-sub {
+    font-size: 15px;
+    color: #555;
+    text-align: center;
+    line-height: 1.7;
+  }
+  .prank-body .hindi-sub strong { color: var(--cbse-blue); }
+
+  .prank-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #e63946, transparent);
+    margin: 16px 0;
+  }
+
+  .actual-result-note {
+    background: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #1b5e20;
+    text-align: center;
+    line-height: 1.6;
+  }
+  .actual-result-note .star { font-size: 20px; }
+
+  .prank-close-btn {
+    display: block;
+    width: 100%;
+    margin-top: 16px;
+    padding: 12px;
+    background: linear-gradient(135deg, #003580, #0056c7);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: opacity .2s;
+  }
+  .prank-close-btn:hover { opacity: .85; }
+
+  .confetti-wrap { position: fixed; inset: 0; pointer-events: none; z-index: 10000; overflow: hidden; }
+  .confetti-piece {
+    position: absolute;
+    width: 10px; height: 14px;
+    top: -20px;
+    animation: fall linear forwards;
+    border-radius: 2px;
+  }
+  @keyframes fall {
+    to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* footer */
+  .site-footer {
+    background: #002366;
+    color: #aac4ff;
+    text-align: center;
+    padding: 12px;
+    font-size: 11px;
+    margin-top: 30px;
+  }
+  .site-footer a { color: #aac4ff; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- GOV STRIP -->
+<div class="gov-strip">
+  <span>Government of India | Ministry of Education</span>
+  <span><a href="#">Skip to Main Content</a> | <a href="#">Screen Reader Access</a> | <a href="#">A- A A+</a></span>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <!-- Ashoka Emblem SVG approximation -->
+  <div class="logo-emblem">
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="40" cy="34" r="22" fill="#003580"/>
+      <circle cx="40" cy="34" r="18" fill="#fff"/>
+      <circle cx="40" cy="34" r="14" fill="#003580"/>
+      <circle cx="40" cy="34" r="2.5" fill="#fff"/>
+      <!-- spokes -->
+      <g stroke="#fff" stroke-width="1.2">
+        <line x1="40" y1="22" x2="40" y2="20"/>
+        <line x1="40" y1="46" x2="40" y2="48"/>
+        <line x1="28" y1="34" x2="26" y2="34"/>
+        <line x1="52" y1="34" x2="54" y2="34"/>
+        <line x1="31.5" y1="25.5" x2="30.1" y2="24.1"/>
+        <line x1="48.5" y1="42.5" x2="49.9" y2="43.9"/>
+        <line x1="48.5" y1="25.5" x2="49.9" y2="24.1"/>
+        <line x1="31.5" y1="42.5" x2="30.1" y2="43.9"/>
+        <line x1="34" y1="22.8" x2="33.3" y2="21"/>
+        <line x1="46" y1="45.2" x2="46.7" y2="47"/>
+        <line x1="46" y1="22.8" x2="46.7" y2="21"/>
+        <line x1="34" y1="45.2" x2="33.3" y2="47"/>
+      </g>
+      <!-- base -->
+      <rect x="25" y="57" width="30" height="5" rx="2" fill="#f4a100"/>
+      <text x="40" y="62.5" text-anchor="middle" font-size="5" fill="#fff" font-weight="bold">सत्यमेव जयते</text>
+    </svg>
+  </div>
+  <div class="header-text">
+    <h1>Central Board of Secondary Education</h1>
+    <p>केन्द्रीय माध्यमिक शिक्षा बोर्ड &nbsp;|&nbsp; Autonomous Body under Ministry of Education, Govt. of India</p>
+  </div>
+  <div class="header-right">
+    <div>Helpline (Result)</div>
+    <div class="helpline">1800-11-8002</div>
+    <div style="margin-top:4px">cbse.gov.in</div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="#">Home</a>
+  <a href="#">About CBSE</a>
+  <a href="#" class="active">Examination</a>
+  <a href="#">Academic</a>
+  <a href="#">Affiliation</a>
+  <a href="#">Schools</a>
+  <a href="#">Training</a>
+  <a href="#">Contact Us</a>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="#">Home</a> &rsaquo; <a href="#">Examination</a> &rsaquo; <a href="#">Results</a> &rsaquo; Class XII Result 2025-26
+</div>
+
+<!-- MAIN -->
+<div class="main-wrap">
+
+  <!-- FORM SECTION -->
+  <div id="formSection">
+    <div class="page-title">
+      🎓 CBSE Class XII Examination Result — 2025-26
+    </div>
+    <div class="card">
+      <div class="notice-box">
+        <strong>📢 Important Notice:</strong> CBSE Class 12 Results 2026 are now available. Enter your details carefully. 
+        Result is confidential — do not share Roll Number with anyone.
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Roll Number <span>*</span></label>
+          <input type="text" id="rollNo" placeholder="e.g. 1234567" maxlength="8">
+        </div>
+        <div class="form-group">
+          <label>Candidate's Name <span>*</span></label>
+          <input type="text" id="candidateName" placeholder="As per Admit Card">
+        </div>
+        <div class="form-group">
+          <label>Date of Birth <span>*</span></label>
+          <input type="date" id="dob">
+        </div>
+        <div class="form-group">
+          <label>School Number <span>*</span></label>
+          <input type="text" id="schoolNo" placeholder="e.g. 10001" maxlength="6">
+        </div>
+        <div class="form-group">
+          <label>Stream <span>*</span></label>
+          <select id="stream">
+            <option value="">-- Select --</option>
+            <option value="science">Science (PCM/PCB)</option>
+            <option value="commerce">Commerce</option>
+            <option value="humanities">Humanities / Arts</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Region <span>*</span></label>
+          <select id="region">
+            <option value="">-- Select Region --</option>
+            <option>Delhi East</option>
+            <option>Delhi West</option>
+            <option>Allahabad</option>
+            <option>Mumbai</option>
+            <option>Kolkata</option>
+            <option>Chennai</option>
+            <option>Bhopal</option>
+            <option>Dehradun</option>
+            <option>Panchkula</option>
+            <option>Ajmer</option>
+            <option>Patna</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="captcha-row">
+        <div>
+          <div style="font-size:12px;font-weight:600;color:var(--cbse-blue);margin-bottom:5px;">Security Code <span style="color:#c0392b">*</span></div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="captcha-box" id="captchaDisplay">7X4K9</div>
+            <span style="font-size:18px;cursor:pointer;color:var(--cbse-blue);" onclick="refreshCaptcha()" title="Refresh">🔄</span>
+            <input class="captcha-input" type="text" id="captchaInput" placeholder="Enter code" maxlength="5">
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-primary" onclick="submitForm()">View Result</button>
+        <button class="btn-secondary" onclick="resetForm()">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOADING SECTION -->
+  <div id="loadingScreen" class="card" style="border-radius:4px; border-top:1px solid var(--cbse-border);">
+    <div class="loader-ring"></div>
+    <p style="font-size:15px;font-weight:600;color:var(--cbse-blue);">Fetching Result from CBSE Server…</p>
+    <div class="loading-steps" id="loadingSteps">
+      <div class="step" id="s1">⏳ Verifying Roll Number...</div>
+      <div class="step" id="s2" style="opacity:.3">⏳ Authenticating candidate details...</div>
+      <div class="step" id="s3" style="opacity:.3">⏳ Retrieving marks from database...</div>
+      <div class="step" id="s4" style="opacity:.3">⏳ Calculating result...</div>
+      <div class="step" id="s5" style="opacity:.3">⏳ Preparing marksheet...</div>
+    </div>
+  </div>
+
+  <!-- RESULT SECTION -->
+  <div id="resultScreen">
+    <div class="result-header-bar">
+      CBSE — Class XII Examination Result 2025-26
+      <small>Secondary School Certificate &nbsp;|&nbsp; Issued by: Central Board of Secondary Education, New Delhi</small>
+    </div>
+    <div class="card" style="border-radius:0 0 4px 4px;">
+
+      <!-- student info -->
+      <table class="student-info-table" id="studentInfoTable">
+        <tr><td>Roll Number</td><td id="rRollNo">—</td></tr>
+        <tr><td>Candidate Name</td><td id="rName">—</td></tr>
+        <tr><td>Mother's Name</td><td>SUMITRA DEVI</td></tr>
+        <tr><td>Father's Name</td><td>RAMESH KUMAR</td></tr>
+        <tr><td>School Name</td><td id="rSchool">DAV PUBLIC SCHOOL, DELHI</td></tr>
+        <tr><td>School Number</td><td id="rSchoolNo">—</td></tr>
+        <tr><td>Date of Birth</td><td id="rDob">—</td></tr>
+        <tr><td>Exam Centre</td><td>GOVT. SENIOR SECONDARY SCHOOL, NEW DELHI — 1100012</td></tr>
+        <tr><td>Subject Combination</td><td id="rStream">—</td></tr>
+        <tr><td>Result Status</td><td><span class="result-fail" style="font-size:16px;" id="rStatus">FAILED ❌</span></td></tr>
+      </table>
+
+      <!-- marks table -->
+      <table class="marks-table" style="margin-top:20px;" id="marksTable">
+        <thead>
+          <tr>
+            <th>Sub. Code</th>
+            <th style="text-align:left;min-width:160px;">Subject Name</th>
+            <th>Theory (80)</th>
+            <th>Practical (20)</th>
+            <th>Total (100)</th>
+            <th>Grade</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="marksBody"></tbody>
+      </table>
+
+      <!-- summary -->
+      <div class="result-summary" id="resultSummary">
+        <div class="summary-box">
+          <div class="label">Total Marks</div>
+          <div class="value" id="rTotal">—</div>
+        </div>
+        <div class="summary-box">
+          <div class="label">Percentage</div>
+          <div class="value" id="rPercentage">—</div>
+          <div class="grade-big" id="rGrade">—</div>
+        </div>
+        <div class="summary-box">
+          <div class="label">Overall Result</div>
+          <div class="value result-fail" id="rOverall">FAILED</div>
+        </div>
+      </div>
+
+      <div style="font-size:11px;color:#888;margin-top:20px;line-height:1.6;border-top:1px solid var(--cbse-border);padding-top:12px;">
+        * This is a computer-generated result. For any discrepancy, contact your school within 15 days.<br>
+        * Marking Scheme: A1 (91–100), A2 (81–90), B1 (71–80), B2 (61–70), C1 (51–60), C2 (41–50), D (33–40), E (Below 33 — FAIL)<br>
+        * Digital Marksheet can be downloaded from DigiLocker: digilocker.gov.in
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PRANK OVERLAY -->
+<div id="prankOverlay" style="display:flex;"><!-- hidden by JS on load -->
+  <div class="prank-card">
+    <div class="prank-banner">
+      <div class="prank-emoji">😂</div>
+      <h2>PRANK ALERT! 🎉</h2>
+      <p>Gotcha! You've been officially trolled 😈</p>
+    </div>
+    <div class="prank-body">
+      <div class="hindi-msg">Mama Mia! 😱<br>Kyon Dhadkan Ruk Gayi?!</div>
+      <div class="hindi-sub">
+        Arrey yaar, <strong>DIKKAT MAT LO!</strong> 😄<br>
+        Yeh sirf ek <strong>dost ka chhota sa prank</strong> tha!<br>
+        Asli result mein toh tu <strong>TOP karega!</strong> 💪
+      </div>
+      <div class="prank-divider"></div>
+      <div class="actual-result-note">
+        <div class="star">🌟⭐🌟</div>
+        <strong>REAL result mein tujhe milenge</strong><br>
+        <span style="font-size:22px;font-weight:900;color:#1b5e20;">90%+ MARKS!</span><br>
+        <span style="font-size:13px;">Tera mehnat rang laayega! Bhagwan sab theek karega. 🙏</span>
+      </div>
+      <button class="prank-close-btn" onclick="closePrank()">😂 Haha! Maar Diya Dost Ne — Close Karo</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFETTI -->
+<div class="confetti-wrap" id="confettiWrap"></div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  &copy; 2026 Central Board of Secondary Education, New Delhi — <a href="#">cbse.gov.in</a> &nbsp;|&nbsp; 
+  <a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Use</a> &nbsp;|&nbsp; 
+  Designed & Maintained by National Informatics Centre (NIC)
+</footer>
+
+<script>
+// ── State
+const captchas = ['7X4K9','3M8QP','5BRTW','KL2NZ','9VXJA'];
+let currentCaptcha = '7X4K9';
+let userName = '';
+
+// ── Stream subjects
+const subjectMap = {
+  science: [
+    { code:'301', name:'English Core' },
+    { code:'042', name:'Physics' },
+    { code:'043', name:'Chemistry' },
+    { code:'041', name:'Mathematics' },
+    { code:'044', name:'Biology / Computer Science' },
+    { code:'049', name:'Physical Education (Optional)' }
+  ],
+  commerce: [
+    { code:'301', name:'English Core' },
+    { code:'055', name:'Accountancy' },
+    { code:'054', name:'Business Studies' },
+    { code:'030', name:'Economics' },
+    { code:'065', name:'Informatics Practices' },
+    { code:'049', name:'Physical Education (Optional)' }
+  ],
+  humanities: [
+    { code:'301', name:'English Core' },
+    { code:'027', name:'History' },
+    { code:'028', name:'Political Science' },
+    { code:'029', name:'Geography' },
+    { code:'030', name:'Economics' },
+    { code:'049', name:'Physical Education (Optional)' }
+  ]
+};
+
+function refreshCaptcha() {
+  currentCaptcha = captchas[Math.floor(Math.random()*captchas.length)];
+  document.getElementById('captchaDisplay').textContent = currentCaptcha;
+}
+
+function resetForm() {
+  document.getElementById('rollNo').value = '';
+  document.getElementById('candidateName').value = '';
+  document.getElementById('dob').value = '';
+  document.getElementById('schoolNo').value = '';
+  document.getElementById('stream').value = '';
+  document.getElementById('region').value = '';
+  document.getElementById('captchaInput').value = '';
+  refreshCaptcha();
+}
+
+function submitForm() {
+  const roll = document.getElementById('rollNo').value.trim();
+  const name = document.getElementById('candidateName').value.trim();
+  const dob  = document.getElementById('dob').value;
+  const school = document.getElementById('schoolNo').value.trim();
+  const stream = document.getElementById('stream').value;
+  const captchaIn = document.getElementById('captchaInput').value.trim().toUpperCase();
+
+  if (!roll || !name || !dob || !school || !stream) {
+    alert('⚠️ Please fill all required fields.'); return;
+  }
+  if (captchaIn !== currentCaptcha) {
+    alert('❌ Security code does not match. Please try again.');
+    refreshCaptcha();
+    document.getElementById('captchaInput').value = '';
+    return;
+  }
+
+  userName = name;
+  document.getElementById('formSection').style.display = 'none';
+  document.getElementById('loadingScreen').style.display = 'block';
+  runLoadingSequence(roll, name, dob, school, stream);
+}
+
+function runLoadingSequence(roll, name, dob, school, stream) {
+  const steps = ['s1','s2','s3','s4','s5'];
+  const labels = [
+    '✅ Roll Number verified.',
+    '✅ Candidate details authenticated.',
+    '✅ Marks retrieved from server.',
+    '✅ Result calculated.',
+    '✅ Marksheet prepared.'
+  ];
+  let i = 0;
+  function tick() {
+    if (i < steps.length) {
+      document.getElementById(steps[i]).textContent = labels[i];
+      document.getElementById(steps[i]).style.opacity = '1';
+      i++;
+      setTimeout(tick, 700);
+    } else {
+      setTimeout(() => showResult(roll, name, dob, school, stream), 600);
+    }
+  }
+  tick();
+}
+
+function showResult(roll, name, dob, school, stream) {
+  document.getElementById('loadingScreen').style.display = 'none';
+  document.getElementById('resultScreen').style.display = 'block';
+
+  // Fill student info
+  document.getElementById('rRollNo').textContent = roll;
+  document.getElementById('rName').textContent = name.toUpperCase();
+  document.getElementById('rSchoolNo').textContent = school;
+  const d = new Date(dob);
+  document.getElementById('rDob').textContent = d.toLocaleDateString('en-IN',{day:'2-digit',month:'long',year:'numeric'});
+  const streamNames = { science:'Science (PCM/PCB)', commerce:'Commerce', humanities:'Humanities / Arts' };
+  document.getElementById('rStream').textContent = streamNames[stream] || stream;
+
+  // Generate FAIL marks
+  const subjects = subjectMap[stream] || subjectMap.commerce;
+  const tbody = document.getElementById('marksBody');
+  tbody.innerHTML = '';
+  let grandTotal = 0;
+  subjects.forEach((sub, idx) => {
+    const isOptional = idx === 5;
+    let theory, practical;
+    if (isOptional) {
+      theory = rand(18, 26); practical = rand(14, 19);
+    } else if (idx === 0) {
+      // English — pass
+      theory = rand(52, 61); practical = rand(15, 18);
+    } else {
+      // 2 subjects FAIL dramatically
+      if (idx === 2 || idx === 3) {
+        theory = rand(12, 22); practical = rand(8, 12);
+      } else {
+        theory = rand(38, 52); practical = rand(13, 16);
+      }
+    }
+    const total = theory + practical;
+    grandTotal += total;
+    const grade = getGrade(total);
+    const status = total < 33 ? '❌ FAIL' : '✅ PASS';
+    const statusClass = total < 33 ? 'result-fail' : 'result-pass';
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${sub.code}</td>
+      <td class="subject-name">${sub.name}</td>
+      <td>${theory}</td>
+      <td>${practical}</td>
+      <td><strong>${total}</strong></td>
+      <td>${grade}</td>
+      <td class="${statusClass}">${status}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  // Total row
+  const maxMarks = subjects.length * 100;
+  const pct = ((grandTotal / maxMarks) * 100).toFixed(2);
+  const tr2 = document.createElement('tr');
+  tr2.className = 'total-row';
+  tr2.innerHTML = `<td colspan="4" style="text-align:right;">TOTAL</td><td>${grandTotal} / ${maxMarks}</td><td colspan="2">${pct}%</td>`;
+  tbody.appendChild(tr2);
+
+  document.getElementById('rTotal').textContent = grandTotal + ' / ' + maxMarks;
+  document.getElementById('rPercentage').textContent = pct + '%';
+  document.getElementById('rGrade').textContent = 'Overall: E (FAIL)';
+  document.getElementById('rStatus').innerHTML = 'FAILED ❌';
+  document.getElementById('rOverall').textContent = 'FAILED';
+
+  // Scroll to result
+  document.getElementById('resultScreen').scrollIntoView({ behavior: 'smooth' });
+
+  // Show prank after 4 seconds
+  setTimeout(showPrank, 4000);
+}
+
+function rand(a, b) { return Math.floor(Math.random() * (b - a + 1)) + a; }
+function getGrade(m) {
+  if (m >= 91) return 'A1'; if (m >= 81) return 'A2';
+  if (m >= 71) return 'B1'; if (m >= 61) return 'B2';
+  if (m >= 51) return 'C1'; if (m >= 41) return 'C2';
+  if (m >= 33) return 'D';  return 'E';
+}
+
+function showPrank() {
+  document.getElementById('prankOverlay').style.display = 'flex';
+  spawnConfetti();
+}
+
+function closePrank() {
+  document.getElementById('prankOverlay').style.display = 'none';
+  document.getElementById('confettiWrap').innerHTML = '';
+}
+
+function spawnConfetti() {
+  const colors = ['#e63946','#f4a261','#2a9d8f','#e9c46a','#264653','#a8dadc','#457b9d'];
+  const wrap = document.getElementById('confettiWrap');
+  wrap.innerHTML = '';
+  for (let i = 0; i < 90; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.cssText = `
+      left: ${Math.random()*100}%;
+      background: ${colors[Math.floor(Math.random()*colors.length)]};
+      animation-duration: ${1.5 + Math.random()*2}s;
+      animation-delay: ${Math.random()*1.5}s;
+      transform: rotate(${Math.random()*360}deg);
+      width: ${6 + Math.random()*8}px;
+      height: ${8 + Math.random()*12}px;
+    `;
+    wrap.appendChild(el);
+  }
+}
+
+// Hide prank overlay on load
+window.onload = () => {
+  document.getElementById('prankOverlay').style.display = 'none';
+};
+</script>
+</body>
+</html>
